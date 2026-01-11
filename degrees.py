@@ -179,11 +179,5 @@ def neighbors_for_person(person_id):
             neighbors.add((movie_id, person_id))
     return neighbors
 
-
-directory = sys.argv[1] if len(sys.argv) == 2 else "large"
-print("Loading data...")
-load_data(directory)
-print("Data loaded.")
-
 if __name__ == "__main__":
     main()
