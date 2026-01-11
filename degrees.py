@@ -1,9 +1,6 @@
 import csv
 import sys
 
-import os
-
-
 
 from util import Node, StackFrontier, QueueFrontier
 
@@ -60,10 +57,6 @@ def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
     directory = sys.argv[1] if len(sys.argv) == 2 else "large"
-
-    cwd = os.getcwd()  # Get the current working directory (cwd)
-    files = os.listdir(cwd)  # Get all the files in that directory
-    print("Files in %r: %s" % (cwd, files))
 
     # Load data from files into memory
     print("Loading data...")
