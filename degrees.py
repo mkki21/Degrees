@@ -1,6 +1,10 @@
 import csv
 import sys
 
+import os
+
+
+
 from util import Node, StackFrontier, QueueFrontier
 
 # Maps names to a set of corresponding person_ids
@@ -57,6 +61,10 @@ def main():
         sys.exit("Usage: python degrees.py [directory]")
     directory = sys.argv[1] if len(sys.argv) == 2 else "large"
 
+    cwd = os.getcwd()  # Get the current working directory (cwd)
+    files = os.listdir(cwd)  # Get all the files in that directory
+    print("Files in %r: %s" % (cwd, files))
+
     # Load data from files into memory
     print("Loading data...")
     load_data(directory)
@@ -107,7 +115,7 @@ def shortest_path(source, target):
         if source == target:
             return []
 
-        # If there are no more nodes to explore, then return None        
+        # If there are no more nodes to explore, then return None
         if frontier.empty():
             return None
 
@@ -125,7 +133,7 @@ def shortest_path(source, target):
             # Make sure the actor is not explored and is not waiting to explore
             if actor_ids not in explored_node and not frontier.contains_state(actor_ids):
                 child = Node(state=actor_ids, parent=node, action=movie_ids)
-                
+
                 # If target found, create the path
                 if child.state == target:
                     path = []
@@ -137,8 +145,8 @@ def shortest_path(source, target):
                     return path
 
                 # If target not found, add to frontier
-                frontier.add(child)                
-  
+                frontier.add(child)
+
 def person_id_for_name(name):
     """
     Returns the IMDB id for a person's name,
