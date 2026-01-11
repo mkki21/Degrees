@@ -140,6 +140,7 @@ def shortest_path(source, target):
                 # If target not found, add to frontier
                 frontier.add(child)
 
+
 def person_id_for_name(name):
     """
     Returns the IMDB id for a person's name,
@@ -177,6 +178,7 @@ def neighbors_for_person(person_id):
         for person_id in movies[movie_id]["stars"]:
             neighbors.add((movie_id, person_id))
     return neighbors
+
 
 directory = sys.argv[1] if len(sys.argv) == 2 else "large"
 print("Loading data...")
